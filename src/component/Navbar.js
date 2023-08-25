@@ -3,8 +3,10 @@ import { ThemeContext } from "../Context/ThemeContext";
 import { AuthContext } from "../Context/AuthContext";
 class Navbar extends React.Component
 {
-  
+    
+    
     render(){
+        
         
         return(
             <AuthContext.Consumer>
@@ -12,13 +14,15 @@ class Navbar extends React.Component
                     return(
                         <ThemeContext.Consumer>
             {(ThemeContext)=>{
-                const {isDarkTheme,darkTheme,lightTheme}=ThemeContext;
+                const {isDarkTheme,darkTheme,lightTheme,changeTheme}=ThemeContext;
                 const {isLoggedIn,changeAuthStatus}=AuthContext;
                 const Theme=isDarkTheme ? darkTheme : lightTheme;
                 return(
                  <nav style={{background:Theme.background,color:Theme.Text,height:'140px'}}>
               <h2 style={{textAlign:'center'}}>my academy</h2>
-              <p onClick={changeAuthStatus} style={{textAlign:'center'}}>{isLoggedIn?'logged in':'logged out' }</p>
+              <button 
+               onClick={changeAuthStatus}  style={{textAlign:'center'}}>{isLoggedIn?'logged in':'logged out' }
+              </button>
               <div className="ui five button" style={{textAlign:'center'}}>
                  <div style={{textAlign:'center'}}>
                 <button className="ui button">
