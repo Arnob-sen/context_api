@@ -1,0 +1,30 @@
+import React from "react";
+import { createContext } from "react";
+export const ThemeContext=createContext();
+class ThemeContextProvider extends React.Component
+{
+    state={
+        isDarkTheme:true,
+        lightTheme:{
+            Text:'#222',
+            background:'#d8ddf1'
+
+        },
+        darkTheme:  {
+            Text:"#fff",
+            background:"#5c5c5c"
+        }
+
+    }
+    render()
+    {
+        return(
+            <ThemeContext.Provider value={{...this.state}}>
+                {this.props.children}
+
+            </ThemeContext.Provider>
+
+        );
+    }
+}
+export default ThemeContextProvider
