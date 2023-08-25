@@ -1,19 +1,25 @@
 import React from "react";
 import { ThemeContext } from "../Context/ThemeContext";
+import { AuthContext } from "../Context/AuthContext";
 class Navbar extends React.Component
 {
   
     render(){
         
         return(
-          <ThemeContext.Consumer>
-            {(value)=>{
-                const {isDarkTheme,darkTheme,lightTheme}=value;
+            <AuthContext.Consumer>
+                {(AuthContext)=>{
+                    return(
+                        <ThemeContext.Consumer>
+            {(ThemeContext)=>{
+                const {isDarkTheme,darkTheme,lightTheme}=ThemeContext;
+                const {isLoggedIn,changeAuthStatus}=AuthContext;
                 const Theme=isDarkTheme ? darkTheme : lightTheme;
                 return(
                  <nav style={{background:Theme.background,color:Theme.Text,height:'140px'}}>
               <h2 style={{textAlign:'center'}}>my academy</h2>
-              <div className="ui five button" >
+              <p onClick={changeAuthStatus} style={{textAlign:'center'}}>{isLoggedIn?'logged in':'logged out' }</p>
+              <div className="ui five button" style={{textAlign:'center'}}>
                  <div style={{textAlign:'center'}}>
                 <button className="ui button">
                     overview
@@ -43,6 +49,11 @@ class Navbar extends React.Component
             }}
 
             </ThemeContext.Consumer>
+          
+
+                    )
+                }}
+            </AuthContext.Consumer>
             
         )
     }
