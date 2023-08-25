@@ -7,7 +7,7 @@ class Todolist extends React.Component
 
     render()
     {
-        const {isDarkTheme,darkTheme,lightTheme}=this.context;
+        const {isDarkTheme,darkTheme,lightTheme,changeTheme}=this.context;
         const Theme=isDarkTheme ? darkTheme :lightTheme;
         
         return(
@@ -15,6 +15,8 @@ class Todolist extends React.Component
                 <p class="item">plan the family trip</p>
                 <p class="item">go for shopping for dinner</p>
                 <p class="item"> go for a walk</p>
+
+                <button className=" ui button primary" onClick={changeTheme}>change Theme</button>
 
 
             </div>
