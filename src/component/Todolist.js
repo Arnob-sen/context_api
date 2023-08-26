@@ -1,17 +1,34 @@
 import React from "react";
+import { useContext } from "react";
 import { ThemeContext } from "../Context/ThemeContext";
-class Todolist extends React.Component
-{
-    static contextType=ThemeContext;
+// class Todolist extends React.Component
+// {
+//     static contextType=ThemeContext;
     
 
-    render()
-    {
-        const {isDarkTheme,darkTheme,lightTheme,changeTheme}=this.context;
-        const Theme=isDarkTheme ? darkTheme :lightTheme;
+//     render()
+//     {
+//         const {isDarkTheme,darkTheme,lightTheme,changeTheme}=this.context;
+//         const Theme=isDarkTheme ? darkTheme :lightTheme;
         
-        return(
-            <div style={{background:Theme.background,color:Theme.Text,height:'140px',textAlign:'center'}}>
+//         return(
+//             <div style={{background:Theme.background,color:Theme.Text,height:'140px',textAlign:'center'}}>
+//                 <p class="item">plan the family trip</p>
+//                 <p class="item">go for shopping for dinner</p>
+//                 <p class="item"> go for a walk</p>
+
+//                 <button className=" ui button primary" onClick={changeTheme}>change Theme</button>
+
+
+//             </div>
+//         )
+//     }
+// }
+const Todolist=()=>{
+    const {isDarkTheme,darkTheme,lightTheme,changeTheme}=useContext(ThemeContext)
+    const Theme=isDarkTheme ? darkTheme :lightTheme;
+    return (
+        <div style={{background:Theme.background,color:Theme.Text,height:'140px',textAlign:'center'}}>
                 <p class="item">plan the family trip</p>
                 <p class="item">go for shopping for dinner</p>
                 <p class="item"> go for a walk</p>
@@ -20,7 +37,6 @@ class Todolist extends React.Component
 
 
             </div>
-        )
-    }
+    )
 }
 export default Todolist;
